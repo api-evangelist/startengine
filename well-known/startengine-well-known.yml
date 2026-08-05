@@ -1,0 +1,60 @@
+generated: '2026-08-05'
+method: probed
+source: live GET of /.well-known/* on every StartEngine host
+# NO DOCUMENTS FOUND. Recorded so a later round does not re-probe blind, and so the
+# soft-404 trap on this host is documented rather than mistaken for a hit.
+#
+# SOFT-404 WARNING — www.startengine.com answers EVERY unknown path with a 301 to
+# /offering/<path> which then returns HTTP 202 and an HTML body. A control probe of
+# /zzz-api-evangelist-control-3570 returned exactly the same 202 + HTML, which proves
+# the 200/202 responses below are a catch-all, not published documents. Likewise
+# user.startengine.com is a single-page app that returns the identical 5,284-byte HTML
+# shell for every path, including /.well-known/agent-card.json.
+hosts:
+- host: www.startengine.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 202
+    result: soft-404 (HTML catch-all, empty body)
+  - path: /.well-known/openid-configuration
+    status: 301 -> 202
+    result: soft-404 (redirect to /offering/, HTML)
+  - path: /.well-known/oauth-authorization-server
+    status: 301 -> 202
+    result: soft-404
+  - path: /.well-known/api-catalog
+    status: 301 -> 202
+    result: soft-404
+  - path: /.well-known/ai-plugin.json
+    status: 301 -> 202
+    result: soft-404
+  - path: /.well-known/agent-card.json
+    status: 301 -> 202
+    result: soft-404
+  - path: /.well-known/agent.json
+    status: 301 -> 202
+    result: soft-404
+  - path: /llms.txt
+    status: 200
+    result: empty body (0 bytes) - not a real llms.txt
+- host: user.startengine.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    result: soft-404 (SPA shell, identical 5284-byte HTML as /)
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    result: soft-404 (SPA shell)
+  - path: /.well-known/agent-card.json
+    status: 200
+    result: soft-404 (SPA shell)
+  - path: /.well-known/security.txt
+    status: 200
+    result: soft-404 (SPA shell)
+control:
+  url: https://www.startengine.com/zzz-api-evangelist-control-3570
+  status: 202
+  note: >-
+    Control path returns the same status and content type as every /.well-known/ probe,
+    so no 2xx above may be read as evidence of a published document.
+documents_found: 0

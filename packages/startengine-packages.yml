@@ -1,0 +1,77 @@
+generated: '2026-08-05'
+method: searched
+source: https://www.npmjs.com/org/startengine-engineering
+# Registries probed 2026-08-05: npm, PyPI, RubyGems, Packagist, pkg.go.dev, crates.io,
+# Maven Central, NuGet. StartEngine publishes NO API client library in any registry -
+# it has no public API to write one against. What it does publish under a verifiably
+# first-party npm scope is an internal design system. Recorded because it is real and
+# first-party, but it is NOT an SDK: no `SDKs` pointer is emitted in apis.yml.
+packages:
+- language: javascript
+  registry: npm
+  name: "@startengine-engineering/button"
+  url: https://www.npmjs.com/package/@startengine-engineering/button
+  install: npm install @startengine-engineering/button
+  version: 1.0.6
+  license: MIT
+  official: true
+  kind: design-system
+  note: >-
+    React button component from StartEngine's internal design system. First-party -
+    npm maintainers include devender-startengine and cameronehrlich-startengine.
+    Not an API client.
+- language: javascript
+  registry: npm
+  name: "@startengine-engineering/theme"
+  url: https://www.npmjs.com/package/@startengine-engineering/theme
+  install: npm install @startengine-engineering/theme
+  version: 0.2.0
+  official: true
+  kind: design-system
+  note: Design-system theme tokens. Not an API client.
+- language: javascript
+  registry: npm
+  name: "@startengine-engineering/test"
+  url: https://www.npmjs.com/package/@startengine-engineering/test
+  install: npm install @startengine-engineering/test
+  version: 0.1.1
+  official: true
+  kind: internal
+  note: Scope placeholder / test package.
+sdk_count: 0
+registries_checked:
+- registry: npm
+  query: startengine
+  result: "@startengine-engineering/* scope only (design system)"
+- registry: pypi
+  query: startengine
+  result: 404
+- registry: pypi
+  query: start-engine
+  result: 404
+- registry: rubygems
+  query: startengine
+  result: no results
+- registry: packagist
+  query: startengine
+  result: no first-party results
+notable_repositories:
+- name: erc1450-reference
+  url: https://github.com/StartEngine/erc1450-reference
+  note: >-
+    Reference implementation of ERC-1450, an SEC-compliant, RTA-controlled security-token
+    standard. Halborn-audited UUPS contracts with multi-sig transfer authority. Solidity,
+    not a client library; upstream PR at ethereum/ERCs#1335.
+- name: ethers-v6-kms-signer
+  url: https://github.com/StartEngine/ethers-v6-kms-signer
+  note: Ethers v6 signer using AWS KMS. Published to GitHub only, not to npm.
+- name: se-agents-examples
+  url: https://github.com/StartEngine/se-agents-examples
+  note: >-
+    Internal AI-agent examples (Playwright browser agent, Metabase query agent, web search).
+    Consumes third-party services; exposes no StartEngine API.
+- name: private-markets-research
+  url: https://github.com/StartEngine/private-markets-research
+  note: >-
+    Reproducible research notebook over FRED, SEC EDGAR, IRS SOI and Census via
+    open-source MCP servers. Consumes MCP; does not publish one.

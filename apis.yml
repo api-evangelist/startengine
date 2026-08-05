@@ -1,17 +1,31 @@
 aid: startengine
 name: StartEngine
-description: 'StartEngine is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  StartEngine is a Los Angeles based online private-market investment platform that lets everyday
+  investors buy equity in startups and pre-IPO companies, and lets founders raise capital under
+  Regulation Crowdfunding, Regulation A+ and Regulation D. The company operates StartEngine Capital,
+  its FINRA-registered funding portal; StartEngine Private, a fund vehicle for later-stage pre-IPO
+  companies; a secondary marketplace for trading eligible private shares; and StartEngine Secure, an
+  SEC-registered transfer agent and cap-table management service sold to issuers on a published
+  monthly plan. StartEngine publishes no public developer API, SDK, webhook catalog or developer
+  portal - its public engineering output is an internal design-system npm scope, agent examples, and
+  Ethereum security-token standards work (the ERC-1450 reference implementation).
+image: https://d17th0s7i8wl11.cloudfront.net/SE_Thumbnail_5d5cb9e21b.png
 url: https://raw.githubusercontent.com/api-evangelist/startengine/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-05'
 modified: '2026-08-05'
 tags:
 - Company
+- Investing
+- Crowdfunding
+- Private Markets
+- Capital Markets
+- Financial Services
+- Transfer Agent
+- Securities
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +33,60 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/startengine-domain-security.yml
 - type: Website
+  url: https://www.startengine.com/
+- type: About
+  url: https://www.startengine.com/about
+- type: Blog
+  url: https://www.startengine.com/blog
+- type: Support
+  url: https://help.startengine.com/
+- type: ContactUs
+  url: https://www.startengine.com/contact-us
+- type: SignUp
+  url: https://user.startengine.com/signup
+- type: Login
+  url: https://user.startengine.com/
+- type: Pricing
+  url: https://www.startengine.com/secure
+- type: TermsOfService
+  url: https://www.startengine.com/terms
+- type: PrivacyPolicy
+  url: https://www.startengine.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/StartEngine
+- type: SecondaryMarket
   url: https://forgeglobal.com/startengine_stock/
+- type: Packages
+  url: packages/startengine-packages.yml
+- type: LLMsTxt
+  url: llms/startengine-llms.txt
+x-enrichment:
+  date: '2026-08-05'
+  status: minimal
+  artifacts_added: 4
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    StartEngine ships an investor app and the StartEngine Secure cap-table product to end users
+    only; api.startengine.com, developer.startengine.com and docs.startengine.com all return
+    NXDOMAIN, and www.startengine.com/robots.txt disallows /api for every crawler because the
+    only /api path is the site's own internal backend.
+  evidence:
+  - url: https://www.startengine.com/robots.txt
+    status: 200
+  - url: https://www.startengine.com/api/openapi.json
+    status: 404
+  - url: https://www.startengine.com/api-docs
+    status: 404
+  - url: https://status.startengine.com/
+    status: 500
+  checked: '2026-08-05'
+  note: >-
+    Every other /.well-known/ and spec path on www.startengine.com answers 202 with an HTML
+    catch-all, and user.startengine.com returns an identical SPA shell for all paths; both were
+    disproved with a control probe and recorded in well-known/startengine-well-known.yml.
