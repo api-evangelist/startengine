@@ -10,6 +10,17 @@ description: >-
   monthly plan. StartEngine publishes no public developer API, SDK, webhook catalog or developer
   portal - its public engineering output is an internal design-system npm scope, agent examples, and
   Ethereum security-token standards work (the ERC-1450 reference implementation).
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://d17th0s7i8wl11.cloudfront.net/SE_Thumbnail_5d5cb9e21b.png
 url: https://raw.githubusercontent.com/api-evangelist/startengine/refs/heads/main/apis.yml
 x-type: company
